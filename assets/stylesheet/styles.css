@@ -132,6 +132,18 @@ section {
   color: #919191;
 }
 
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #d9b99b;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+
 #footer {
   background: #212529;
   color: #fff;
