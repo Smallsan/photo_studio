@@ -7,7 +7,6 @@
   padding: 0;
   display: flex;
   list-style: none;
-
 }
 
 #header {
@@ -125,7 +124,6 @@ section {
   position: relative;
 }
 
-
 .section-title p {
   margin-bottom: 0;
   font-size: 14px;
@@ -133,7 +131,7 @@ section {
 }
 
 .section-title h2::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   width: 40px;
@@ -142,7 +140,6 @@ section {
   bottom: 0;
   left: calc(50% - 20px);
 }
-
 
 #footer {
   background: #212529;
@@ -153,7 +150,7 @@ section {
 }
 
 .social-links a {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .modal-header {
