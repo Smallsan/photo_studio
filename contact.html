@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/stylesheet/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <header id="header" class="d-flex align-items-center position-sticky top-0">
@@ -63,12 +64,15 @@
 
     <section>
       <div class="container">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-down">
           <h2>Contact Us</h2>
+          <p>
+            For inquiries and reservations, please contact us through our facebook page or through the contact details below.
+          </p>
         </div>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" data-aos="fade-right">
             <div class="card">
               <div class="card-body">
                 <h2 class="card-title">
@@ -105,9 +109,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6"data-aos="fade-left">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" >
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15440.18905824836!2d120.9599374!3d14.6532585!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b500732e1241%3A0xcb00e8f6e797c586!2stans&#39;%20self-portrait%20studio!5e0!3m2!1sen!2sph!4v1716389890638!5m2!1sen!2sph"
                   width="100%"
@@ -121,7 +125,7 @@
             </div>
           </div>
 
-          <div class="row mt-4">
+          <div class="row mt-4" data-aos="fade-up">
             <div class="col-md-4">
               <div class="card">
                 <img src="assets/images/contact/facebook.png" class="card-img-top" alt="Facebook Page">
@@ -172,4 +176,8 @@
   </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script> <!-- AOS JS -->
+<script>
+  AOS.init();
+</script>
 </html>

@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/stylesheet/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <header id="header" class="d-flex align-items-center position-sticky top-0">
@@ -63,12 +64,15 @@
 
     <section>
       <div class="container">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-down">
         <h2>Personnel</h2>
+        <p>
+          Meet the people behind the lens of Tan's Self-Portrait Studio.
+        </p>
       </div>
 
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" data-aos="zoom-in">
         <div class="col-lg-6">
           <div class="card mx-auto" style="width: 18rem;">
             <img src="assets/images/owner/owner.png" class="card-img-top" alt="Business Owner">
@@ -109,4 +113,8 @@
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-</html>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script> <!-- AOS JS -->
+  <script>
+    AOS.init();
+  </script>
+  </html>
