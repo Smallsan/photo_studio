@@ -55,12 +55,13 @@
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
-  color: #5cb874;
+  color: #d9b99b;
 }
 
 .nav-item {
   margin-right: 15px;
 }
+
 
 @media (max-width: 992px) {
   .logo {
