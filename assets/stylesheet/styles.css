@@ -9,6 +9,10 @@
   list-style: none;
 }
 
+.lower-modal .modal-dialog {
+  margin-top: 10px; 
+}
+
 #header {
   z-index: 9999;
   background-color: #ffffff;
