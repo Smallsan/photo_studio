@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photography Studio</title>
+    <title>Photography Studio - Home</title>
+    <link rel="stylesheet" href="assets/stylesheet/styles.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/stylesheet/styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-primary nav-link" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary nav-link book-now-btn" data-bs-toggle="modal"
                                 data-bs-target="#appointmentModal">
                                 Book Now
                             </button>
@@ -58,11 +58,10 @@
 
     <div class="modal fade lower-modal" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel"
         aria-hidden="true">
-        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="appointmentModalLabel">Book an Appointment</h5>
+                    <h5 class="modal-title " id="appointmentModalLabel">Book an Appointment</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -162,17 +161,6 @@
 
     <footer id="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="https://www.facebook.com/tansselfportraitstudio" target="_blank" class="facebook">
-                    <i class="bi bi-facebook">Facebook</i>
-                </a>
-                <a href="tansselfportraitstudio@gmail.com" class="email">
-                    <i class="bi bi-envelope-fill">Email</i>
-                </a>
-                <a href="tel:+639270566739" class="phone">
-                    <i class="bi bi-telephone-fill">Phone</i>
-                </a>
-            </div>
             <div class="copyright">
                 &copy; Copyright
                 <strong><span>Tan's Self-Portrait Studio</span></strong>. All Rights Reserved

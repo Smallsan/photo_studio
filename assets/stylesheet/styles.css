@@ -10,7 +10,7 @@
 }
 
 .lower-modal .modal-dialog {
-  margin-top: 10px; 
+  margin-top: 80px;
 }
 
 #header {
@@ -19,13 +19,13 @@
 }
 
 @font-face {
-  font-family: 'Brush Script MT';
-  src: url('assets/images/font/BrushScript.otf') format('opentype');
+  font-family: "Brush Script MT";
+  src: url("assets/images/font/BrushScript.otf") format("opentype");
 }
 
 .logo-text {
   color: black;
-  font-family: 'Brush Script MT', cursive;
+  font-family: "Brush Script MT", cursive;
   margin-left: 10px;
 }
 
@@ -71,7 +71,11 @@
   margin-right: 15px;
 }
 
+.book-now-btn:hover {
+  background-color: #d9b99b;
+  color: white;
 
+}
 @media (max-width: 992px) {
   .logo {
     display: none;
@@ -81,19 +85,25 @@
     width: 100%;
   }
 
-  .navbar-nav {
+  .navbar a {
+    padding-left: 0%;
+  }
+
+  .navbar-nav .book-now-btn {
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+
+  .nav-item {
+    display: block; /* Stack the nav items vertically */
+    margin: 0 auto; /* Center the nav items horizontally */
   }
 }
 
 .no-padding {
   padding: 0;
 }
-  
-
-
 
 section {
   padding: 60px 0;
@@ -124,7 +134,7 @@ section {
 }
 
 .section-title h2::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 40px;
@@ -147,6 +157,6 @@ section {
 }
 
 .modal-header {
-  background-color: #fff0db;
+  background-color: #c9a26b;
   color: white;
 }
