@@ -13,90 +13,11 @@
 </head>
 
 <body>
-    <header id="header" class="d-flex align-items-center position-sticky top-0">
-        <div class="container-fluid d-flex justify-content-between custom-container">
-            <h1 class="logo">
-                <a href="index.php">
-                    <img src="assets/images/logo/logo.jpg" alt="Photography Studio" />
-                    <span class="logo-text">Tans' Self-Portrait Studio</span>
-                </a>
-            </h1>
-
-            <nav class="navbar navbar-expand-lg">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-primary nav-link book-now-btn" data-bs-toggle="modal"
-                                data-bs-target="#appointmentModal">
-                                Book Now
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.php">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.php">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="gallery.php">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="contact.php">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <?php include './modules/navbar.php'; ?>
 
 
-    <div class="modal fade lower-modal" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="appointmentModalLabel">Book an Appointment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="appointmentForm" action="submit_appointment.php" method="post">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone Number:</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required
-                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number format: 123-456-7890">
-                        </div>
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Date:</label>
-                            <input type="date" class="form-control" id="date" name="date" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="time" class="form-label">Time:</label>
-                            <input type="time" class="form-control" id="time" name="time" required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" form="appointmentForm">Book Appointment</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include './modules/appointment_form.php'; ?>
+
 
     <section>
         <div class="container">
@@ -183,14 +104,7 @@
         </div>
     </section>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright
-                <strong><span>Tan's Self-Portrait Studio</span></strong>. All Rights Reserved
-            </div>
-        </div>
-    </footer>
+    <?php include './modules/footer.php'; ?>
 </body>
 
 <script>
