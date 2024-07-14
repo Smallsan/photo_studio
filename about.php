@@ -32,11 +32,12 @@
                 </p>
             </div>
 
-            <div class="row">
-                <div class="col-lg-6 order-1 order-lg-2 " data-aos="fade-left">
-                    <img src="assets/images/about/About.png" class="img-fluid" alt="About Us" />
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-left">
+                    <img src="assets/images/about/About.png" class="img-fluid mx-auto" alt="About Us"
+                        style="display: block;" />
                 </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content text-center" data-aos="fade-right">
                     <h3>No Matter the Size, We've Got You Covered!</h3>
                     <h4>Our Solution: Zoom Lenses</h4>
                     <p>
@@ -44,7 +45,7 @@
                         complemented by zoom lenses to accommodate all our customers'
                         needs:
                     </p>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li>Need a portrait shot? No problem.</li>
                         <li>Want a group picture? No problem.</li>
                         <li>
@@ -63,10 +64,36 @@
                         portraits. Our venue is air-conditioned, ensuring a comfortable
                         environment for your photography session.
                     </p>
+                    <p>
+                        In case you are in need of an assitant photographer, Just tell our inhouse staff and they will
+                        gladly assist and help you to get the best shot possible.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="Studio" class="Studio">
+        <div class="container">
+            <div class="section-title" data-aos="fade-down">
+                <h2>Our Studio</h2>
+                <p>This is what our place looks like! Feel free to visit us anytime.</p>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <img src="assets/images/about/studio_1.png" class="img-fluid" alt="Gallery Image 1" />
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/about/studio_2.png" class="img-fluid" alt="Gallery Image 2" />
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/about/studio_3.png" class="img-fluid" alt="Gallery Image 3" />
+                </div>
+            </div>
+        </div>
+    </section>
+
     <?php include './modules/footer.php'; ?>
 </body>
 

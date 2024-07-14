@@ -34,10 +34,6 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#appointmentModal">Book
-                            Now</a>
-                    </li>
                     <?php if (!isset($_SESSION['loggedin'])): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
@@ -78,6 +74,9 @@ session_start();
                 <a href="admin_dashboard.php" class="btn btn-primary w-100 mb-2">Admin Dashboard</a>
                 <?php else: ?>
                 <a href="user_dashboard.php" class="btn btn-primary w-100 mb-2">User Dashboard</a>
+                <a href="#" class="btn btn-primary w-100 mb-2" data-bs-toggle="modal"
+                    data-bs-target="#appointmentModal">Book Now</a>
+
                 <?php endif; ?>
                 <button onclick="confirmLogout()" class="btn btn-danger w-100">Log Out</button>
             </div>
