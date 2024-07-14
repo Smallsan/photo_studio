@@ -1,7 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
-
 <header id="header" class="d-flex align-items-center position-sticky top-0">
     <div class="container-fluid d-flex justify-content-between custom-container">
         <h1 class="logo">
