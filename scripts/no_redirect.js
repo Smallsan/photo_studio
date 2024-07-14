@@ -1,17 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        submitForm(this);
+        if (validateLoginForm(this)) {
+            submitForm(this);
+        }
     });
 
     document.getElementById('signupForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        submitForm(this);
+        if (validateSignupForm(this)) {
+            submitForm(this);
+        }
     });
 
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        submitForm(this);
+        if (validateAppointmentForm(this)) {
+            submitForm(this);
+        }
     });
 
     function submitForm(form) {
@@ -51,5 +57,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 alert("There was an error submitting the form.");
             });
+    }
+
+    function validateLoginForm(form) {
+        return true;
+    }
+    function validateSignupForm(form) {
+        var password = form.querySelector('#password').value;
+        var confirmPassword = form.querySelector('#confirmPassword').value;
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+
+        var username = form.querySelector('#username').value;
+        var email = form.querySelector('#email').value; 
+
+    
+        return true;
+    }
+    function validateAppointmentForm(form) {
+        var name = form.querySelector('#name').value.trim();
+        var email = form.querySelector('#email').value.trim();
+        var phone = form.querySelector('#phone').value.trim();
+        var date = form.querySelector('#date').value;
+        var time = form.querySelector('#time').value;
+        var currentDate = new Date().toISOString().split('T')[0];
+    
+        if (name.length < 2) {
+            alert("Please enter a name with at least 2 characters.");
+            return false;
+        }
+    
+        if (date < currentDate) {
+            alert("Please select a future date for the appointment.");
+            return false;
+        }
+        return true;
     }
 });

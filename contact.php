@@ -61,7 +61,11 @@
                             <p class="card-text">
                                 <i class="bi bi-journal-text"></i>
                                 <i>Although we accept walk-ins, we highly recommend that you book a reservation.
-
+                                </i>
+                                <i> You can either book a reservation in the site after you login or contact us through
+                                    our facebook page. <br>
+                                    or if you are unable to do both of those, you can always just
+                                    give us a call to book.</i>
                                 </i>
                             </p>
                         </div>
@@ -72,7 +76,7 @@
                         <div class="card-body">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15440.18905824836!2d120.9599374!3d14.6532585!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b500732e1241%3A0xcb00e8f6e797c586!2stans&#39;%20self-portrait%20studio!5e0!3m2!1sen!2sph!4v1716389890638!5m2!1sen!2sph"
-                                width="100%" height="450" style="border: 0" allowfullscreen="" loading="lazy"
+                                width="100%" height="377" style="border: 0" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -91,15 +95,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
-
-
             </div>
         </div>
     </section>
