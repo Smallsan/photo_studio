@@ -14,12 +14,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-primary nav-link book-now-btn" data-bs-toggle="modal"
-                            data-bs-target="#appointmentModal">
-                            Book Now
-                        </button>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
@@ -34,6 +29,16 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#appointmentModal">Book
+                            Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
                     </li>
                 </ul>
             </div>

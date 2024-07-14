@@ -14,9 +14,8 @@
 
 <body>
     <?php include './modules/navbar.php'; ?>
-
     <?php include './modules/appointment_form.php'; ?>
-
+    <?php include './modules/login_signup_form.php'; ?>
 
     <!-- Main Carousel -->
     <!--1920 x 720-->
@@ -83,29 +82,7 @@
     <?php include './modules/footer.php'; ?>
 </body>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var formData = new FormData(this);
-
-        fetch(this.action, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert("Appointment submitted successfully!");
-                this.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("There was an error submitting the appointment.");
-            });
-    });
-});
-</script>
+<script src='scripts/no_redirect.js'></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>

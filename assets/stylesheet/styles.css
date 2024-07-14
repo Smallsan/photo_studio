@@ -10,7 +10,7 @@
 }
 
 .lower-modal .modal-dialog {
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 #header {
@@ -96,8 +96,8 @@
   }
 
   .nav-item {
-    display: block; /* Stack the nav items vertically */
-    margin: 0 auto; /* Center the nav items horizontally */
+    display: block; 
+    margin: 0 auto; 
   }
 }
 
