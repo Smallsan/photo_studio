@@ -8,7 +8,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="signupForm" action="signup.php" method="POST">
+                <form id="signupForm" action="scripts/signup.php" method="POST">
+                    <div class="mb-3">
+                        <label for="signupUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="signupUsername" name="username" required>
+                    </div>
                     <div class="mb-3">
                         <label for="signupEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" name="email" required>
@@ -28,7 +32,6 @@
         </div>
     </div>
 </div>
-
 <!-- Login Modal -->
 <div class="modal fade lower-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -38,7 +41,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="loginForm" action="login.php" method="POST">
+                <form id="loginForm" action="scripts/login.php" method="POST">
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="loginEmail" name="email" required>

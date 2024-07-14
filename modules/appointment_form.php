@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="appointmentForm" action="submit_appointment.php" method="post">
+                <form id="appointmentForm" action="scripts/submit_appointment.php" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" required>

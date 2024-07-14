@@ -32,9 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     switch (form.id) {
                         case 'loginForm':
                             alert("Login successful!");
+                            window.location.reload();
                             break;
                         case 'signupForm':
                             alert("Signup successful!");
+                            window.location.reload();
                             break;
                         case 'appointmentForm':
                             alert("Appointment booked successfully!");

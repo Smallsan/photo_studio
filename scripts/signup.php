@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = ""; 
@@ -11,15 +13,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-$stmt->bind_param("ss", $email, $hashed_password);
+$stmt = $conn->prepare("INSERT INTO users (username, email, password, user_type) VALUES (?, ?, ?, ?)");
+$user_type = 'user'; 
+$stmt->bind_param("ssss", $post_username, $email, $hashed_password, $user_type);
 
+$post_username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password']; 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 if ($stmt->execute()) {
     echo "User registered successfully";
+
+    $user_id = $stmt->insert_id;
+
+    $_SESSION['loggedin'] = true;
+    $_SESSION['user_id'] = $user_id;
+    $_SESSION['username'] = $post_username;
+    $_SESSION['user_type'] = $user_type;
+
+
 } else {
     echo "Error: " . $stmt->error;
 }
