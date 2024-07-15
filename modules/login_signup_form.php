@@ -10,6 +10,10 @@
             <div class="modal-body">
                 <form id="signupForm" action="scripts/signup.php" method="POST">
                     <div class="mb-3">
+                        <label for="signupName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="signupName" name="name" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="signupUsername" class="form-label">Username</label>
                         <input type="text" class="form-control" id="signupUsername" name="username" required>
                     </div>
@@ -25,6 +29,18 @@
                         <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="signupConfirmPassword" name="confirm_password"
                             required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupBirthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="signupBirthday" name="birthday" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="signupAddress" name="address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPhone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="signupPhone" name="phone" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Sign Up</button>
                 </form>
@@ -50,7 +66,10 @@
                         <label for="loginPassword" class="form-label">Password</label>
                         <input type="password" class="form-control" id="loginPassword" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="forgot_password.php" class="btn btn-link">Forgot Password?</a>
+                    </div>
                 </form>
             </div>
         </div>

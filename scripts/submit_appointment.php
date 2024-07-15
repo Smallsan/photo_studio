@@ -20,15 +20,15 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id']; 
 
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+$phone = $_SESSION['phone']; 
+$date = $_POST['date'];
+$time = $_POST['time'];
+
 $stmt = $conn->prepare("INSERT INTO appointments (name, email, phone, date, time, confirmed, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $confirmed = 0; 
 $stmt->bind_param("sssssii", $name, $email, $phone, $date, $time, $confirmed, $user_id);
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$phone = $_POST['phone']; 
-$date = $_POST['date'];
-$time = $_POST['time'];
 
 if ($stmt->execute()) {
     echo "Appointment booked successfully";

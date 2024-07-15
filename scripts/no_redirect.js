@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         case 'appointmentForm':
                             alert("Appointment booked successfully!");
                             break;
+                        default:
+                            alert("Unknown form submitted.");
                     }
                 } else {
                     alert("There was an issue with the submission.");
@@ -63,35 +65,45 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
     function validateSignupForm(form) {
-        var password = form.querySelector('#password').value;
-        var confirmPassword = form.querySelector('#confirmPassword').value;
+        var password = form.querySelector('#signupPassword').value;
+        var confirmPassword = form.querySelector('#signupConfirmPassword').value;
         if (password !== confirmPassword) {
             alert("Passwords do not match.");
             return false;
         }
-
-        var username = form.querySelector('#username').value;
-        var email = form.querySelector('#email').value; 
-
+    
+        var birthday = form.querySelector('#signupBirthday').value;
+        var birthdayDate = new Date(birthday);
+        var today = new Date();
+        var age = today.getFullYear() - birthdayDate.getFullYear();
+        var m = today.getMonth() - birthdayDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthdayDate.getDate())) {
+            age--;
+        }
+    
+        if (age < 18) {
+            alert("You must be at least 18 years old.");
+            return false;
+        }
     
         return true;
     }
+
     function validateAppointmentForm(form) {
-        var name = form.querySelector('#name').value.trim();
-        var email = form.querySelector('#email').value.trim();
-        var phone = form.querySelector('#phone').value.trim();
         var date = form.querySelector('#date').value;
         var time = form.querySelector('#time').value;
         var currentDate = new Date().toISOString().split('T')[0];
     
-        if (name.length < 2) {
-            alert("Please enter a name with at least 2 characters.");
-            return false;
-        }
-    
         if (date < currentDate) {
             alert("Please select a future date for the appointment.");
             return false;
+        } else if (date === currentDate) {
+            var appointmentTime = new Date(date + 'T' + time);
+            var now = new Date();
+            if (appointmentTime <= now) {
+                alert("For today's appointments, please select a future time.");
+                return false;
+            }
         }
         return true;
     }

@@ -13,14 +13,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("INSERT INTO users (username, email, password, user_type) VALUES (?, ?, ?, ?)");
-$user_type = 'user'; 
-$stmt->bind_param("ssss", $post_username, $email, $hashed_password, $user_type);
-
 $post_username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password']; 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+$name = $_POST['name'];
+$birthday = $_POST['birthday'];
+$address = $_POST['address'];
+$phone = $_POST['phone'];
+
+$stmt = $conn->prepare("INSERT INTO users (username, email, password, user_type, name, birthday, address, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$user_type = 'user'; 
+$stmt->bind_param("ssssssss", $post_username, $email, $hashed_password, $user_type, $name, $birthday, $address, $phone);
+
 
 if ($stmt->execute()) {
     echo "User registered successfully";
@@ -28,9 +33,14 @@ if ($stmt->execute()) {
     $user_id = $stmt->insert_id;
 
     $_SESSION['loggedin'] = true;
+    $_SESSION['email'] = $email;
     $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $post_username;
     $_SESSION['user_type'] = $user_type;
+    $_SESSION['name'] = $name;
+    $_SESSION['birthday'] = $birthday;
+    $_SESSION['address'] = $address;
+    $_SESSION['phone'] = $phone;
 
 
 } else {
