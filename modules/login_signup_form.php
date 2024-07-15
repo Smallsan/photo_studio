@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="signupPhone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="signupPhone" name="phone" required>
+                        <input type="text" class="form-control" id="signupPhone" name="phone" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Sign Up</button>
                 </form>
