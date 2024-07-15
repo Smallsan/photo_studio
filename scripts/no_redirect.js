@@ -86,6 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     
+        var username = form.querySelector('#signupUsername').value;
+        var letterRegex = /^[A-Za-z]+$/;
+        if (!letterRegex.test(username)) {
+            alert("Username must contain only letters.");
+            return false;
+        }
+    
         return true;
     }
 
