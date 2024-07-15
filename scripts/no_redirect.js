@@ -97,6 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Fullname must contain only letters.");
             return false;
         }
+
+        var email = form.querySelector('#signupEmail').value;
+        var emailRegex = /\.com$/;
+        if (!emailRegex.test(email)) {
+            alert("Email must end with .com.");
+            return false;
+        }
+    
     
     
         return true;
