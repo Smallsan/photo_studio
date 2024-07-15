@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var fullname = form.querySelector("#signupName").value;
     var username = form.querySelector("#signupUsername").value;
-    var letterRegex = /^[A-Za-z]+$/;
+    var letterRegex = /^[A-Za-z\s]+$/;
     if (!letterRegex.test(username)) {
       alert("Username must contain only letters.");
       return false;
