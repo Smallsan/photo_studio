@@ -86,12 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     
+        var fullname = form.querySelector('#signupName').value;
         var username = form.querySelector('#signupUsername').value;
         var letterRegex = /^[A-Za-z]+$/;
         if (!letterRegex.test(username)) {
             alert("Username must contain only letters.");
             return false;
         }
+        if (!letterRegex.test(fullname)) {
+            alert("Fullname must contain only letters.");
+            return false;
+        }
+    
     
         return true;
     }
