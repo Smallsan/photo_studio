@@ -17,48 +17,70 @@
     <?php include './modules/appointment_form.php'; ?>
     <?php include './modules/login_signup_form.php'; ?>
 
-
     <section>
         <div class="container">
             <div class="section-title" data-aos="fade-down">
                 <h2>Gallery</h2>
-                <p>
-                    Some sample pictures from our clients. Click on the images to expand them.
-                </p>
+                <p>Some sample pictures from our clients. Click on the images to expand them.</p>
             </div>
-
         </div>
         <div class="container">
             <div class="row">
-                <?php for ($i = 1; $i <= 20; $i++): ?>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = ""; 
+                $dbname = "photo_studio"; 
+                
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "SELECT id FROM gallery";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $imageId = $row["id"];
+                ?>
                 <div class="col-md-3" data-aos="fade-up">
                     <div class="card">
-                        <img src="assets/images/clients/<?php echo $i; ?>.jpg" class="card-img-top"
-                            data-bs-toggle="modal" data-bs-target="#image<?php echo $i; ?>Modal" />
+                        <img src="sub_modules/gallery/load_gallery.php?id=<?php echo $imageId; ?>" class="card-img-top"
+                            data-bs-toggle="modal" data-bs-target="#image<?php echo $imageId; ?>Modal" />
                         <div class="card-body"></div>
                     </div>
                 </div>
-                <?php endfor; ?>
+                <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+                ?>
             </div>
         </div>
     </section>
 
     <?php
-for ($i = 1; $i <= 20; $i++) {
-    echo '<div class="modal fade" id="image' . $i . 'Modal" tabindex="-1" aria-labelledby="image' . $i . 'ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="assets/images/clients/' . $i . '.jpg" class="img-fluid" />
+    if ($result->num_rows > 0) {
+        $result->data_seek(0); 
+        while ($row = $result->fetch_assoc()) {
+            $imageId = $row["id"];
+            echo '<div class="modal fade" id="image' . $imageId . 'Modal" tabindex="-1" aria-labelledby="image' . $imageId . 'ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="sub_modules/gallery/load_gallery.php?id=' . $imageId . '" class="img-fluid" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>';
-}
-?>
+        </div>';
+        }
+    }
+    ?>
 
     <?php include './modules/footer.php'; ?>
 </body>
