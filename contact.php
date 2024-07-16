@@ -97,20 +97,11 @@
                         </div>
                     </div>
 
-					<div class="col-md-6 flex-fill" data-aos="fade-up">
+					<div class="col-md-6" data-aos="fade-up">
 						<div class="card">
                             <div class="card-body">
 								<h5 class="card-title">Email us</h5>
-								<form action="scripts/email.php" id="emailthem">
-									<div class="form-group">
-										<label>Subject</label>
-										<input class="form-control" type="text" name="subject" id="email_subject"/><br>
-										<label>Content</label>
-										<textarea class="form-control" type="submit" name="content" id="email_content"></textarea>
-									</div>
-									<div class="p-3"></div>
-									<button type="submit" class="btn btn-primary">Send an Email</button>
-								</form>
+								<p><a href="mailto:Tansselfportraitstudio@gmail.com">Send email</a></p>
                             </div>
 						</div>
 					</div>
