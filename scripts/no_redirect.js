@@ -1,3 +1,16 @@
+
+const badwords = require("./words.js");
+
+function is_in_badwords_list(word) {
+	for (let i = 0; i < badwords.length; i++) {
+		const element = badwords[i];
+		if (element.match(word).length >= 1) {
+			return true;
+		}
+	}
+	return false;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -71,6 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function validateSignupForm(form) {
     var password = form.querySelector("#signupPassword").value;
     var confirmPassword = form.querySelector("#signupConfirmPassword").value;
+	if (is_in_badwords_list(password.toLowerCase())) {
+		alert("Password contains a bad word.");
+		return false;
+	}
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       return false;
@@ -92,6 +109,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var fullname = form.querySelector("#signupName").value;
     var username = form.querySelector("#signupUsername").value;
+	if (is_in_badwords_list(fullname.toLowerCase()) || is_in_badwords_list(username.toLowerCase())) {
+		alert("Username or fullname contains a bad word.");
+		return false;
+	}
     var letterRegex = /^[A-Za-z\s]+$/;
     if (!letterRegex.test(username)) {
       alert("Username must contain only letters.");
