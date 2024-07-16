@@ -2859,6 +2859,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+  document
+    .getElementById("emailthem")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (validateEmailthemForm(this)) {
+        submitForm(this);
+      }
+    });
+
   function submitForm(form) {
     var formData = new FormData(form);
 
@@ -2886,6 +2895,9 @@ document.addEventListener("DOMContentLoaded", function () {
             case "appointmentForm":
               alert("Appointment booked successfully!");
               break;
+		  	case "emailthem":
+			  alert("Emailed successfully.");
+			  break;
             default:
               alert("Unknown form submitted.");
           }
@@ -2979,5 +2991,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     return true;
+  }
+
+  function validateEmailthemForm(form) {
+	var subject = form.querySelector("#email_subject").value;
+	var content = form.querySelector("#email_content").value;
+	  console.log("Emailthem form: ", subject, content);
+	if (!subject || !content) {
+		alert("Fill up the subject and contents first.");
+		return false;
+	}
+	return true;
   }
 });
