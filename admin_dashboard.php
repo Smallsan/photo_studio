@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
-    echo "Access denied. This page is for admin only.";
+    header('Location: index.php');
     exit;
 }
 ?>
@@ -132,27 +132,27 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
 
     <div class="container mt-5">
         <h2 class="mb-4">Gallery</h2>
-        <div class="row" style="height: 400px; overflow-y: scroll;">
+        <div class="row" style="height: 1000px; overflow-y: scroll;">
             <?php
-            $query = "SELECT id, upload_date, image FROM gallery ORDER BY upload_date DESC";
-            $result = $conn->query($query);
+        $query = "SELECT id, upload_date, image FROM gallery ORDER BY upload_date DESC";
+        $result = $conn->query($query);
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='col-md-4 mb-3'>";
-                    echo "<div class='card'>";
-                    echo "<img class='card-img-top' src='data:image/jpeg;base64," . base64_encode($row['image']) . "' style='width: 100%; height: auto;'>";
-                    echo "<div class='card-body'>";
-                    echo "<p class='card-text'>Upload Date: " . $row["upload_date"] . "</p>";
-                    echo "<button class='btn btn-danger' onclick='removeImage(" . $row["id"] . ")'>Remove</button>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-            } else {
-                echo "<p class='col-12'>No images found.</p>";
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='col-md-4 mb-3'>";
+                echo "<div class='card'>";
+                echo "<img class='card-img-top' src='data:image/jpeg;base64," . base64_encode($row['image']) . "' style='width: 100%; height: auto;'>";
+                echo "<div class='card-body'>";
+                echo "<p class='card-text'>Upload Date: " . $row["upload_date"] . "</p>";
+                echo "<button class='btn btn-danger' onclick='removeImage(" . $row["id"] . ")'>Remove</button>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
             }
-            ?>
+        } else {
+            echo "<p class='col-12'>No images found.</p>";
+        }
+        ?>
         </div>
         <button class="btn btn-primary mt-3" onclick="toggleUploadForm()">Add Image</button>
     </div>
@@ -223,8 +223,8 @@ function uploadImage() {
         data: formData,
         processData: false,
         contentType: false,
-        success: function(responseText) {
-            var response = JSON.parse(responseText); // Explicitly parse the JSON response
+        dataType: 'json',
+        success: function(response) {
             if (response.error) {
                 alert('Error uploading image: ' + response.error);
             } else {

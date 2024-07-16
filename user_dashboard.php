@@ -58,6 +58,7 @@
                 echo "<p class='card-text'><strong>Phone:</strong> " . $row["phone"] . "</p>";
                 echo "<p class='card-text'><strong>Date:</strong> " . $row["date"] . "</p>";
                 echo "<p class='card-text'><strong>Time:</strong> " . $row["time"] . "</p>";
+                echo "<p class='card-text'><strong>Package Type:</strong> " . $row["booking_type"] . "</p>";
                 echo "<p class='card-text'><strong>Confirmed:</strong> " . ($row["confirmed"] ? "Yes" : "No") . "</p>";
                 echo "</div>"; // Close card-body
                 echo "</div>"; // Close card

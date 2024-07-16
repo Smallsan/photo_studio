@@ -17,26 +17,11 @@
     <?php include './modules/appointment_form.php'; ?>
     <?php include './modules/login_signup_form.php'; ?>
 
-    <!-- Main Carousel -->
-    <!--1920 x 720-->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-aos="fade-down">
-
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/images/carousel/main_carousel/slide.png" alt="First slide" />
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/carousel/main_carousel/slide_2.png" alt="Second slide" />
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="assets/videos/studio.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
 

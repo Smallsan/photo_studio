@@ -10,18 +10,16 @@
                 <form id="appointmentForm" action="scripts/submit_appointment.php" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name"
-                            value="<?php echo $_SESSION['name']; ?>" readonly>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email" name="email"
-                            value="<?php echo $_SESSION['email']; ?>" readonly>
+                            value="<?php echo $_SESSION['email']; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone Number:</label>
-                        <input type="tel" class="form-control" id="phone" name="phone"
-                            value="<?php echo $_SESSION['phone']; ?>" readonly>
+                        <input type="tel" class="form-control" id="phone" name="phone">
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date:</label>
@@ -30,6 +28,15 @@
                     <div class="mb-3">
                         <label for="time" class="form-label">Time:</label>
                         <input type="time" class="form-control" id="time" name="time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="packageType" class="form-label">Package Type:</label>
+                        <select class="form-control" id="packageType" name="packageType" required>
+                            <option value="">Select a package</option>
+                            <option value="basic">Basic Package</option>
+                            <option value="group">Group Package</option>
+                            <option value="premium">Premium Package</option>
+                        </select>
                     </div>
                 </form>
             </div>
