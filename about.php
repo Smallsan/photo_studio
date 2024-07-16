@@ -73,6 +73,10 @@
         </div>
     </section>
 
+
+
+
+
     <section id="Studio" class="Studio">
         <div class="container">
             <div class="section-title" data-aos="fade-down">
@@ -93,6 +97,39 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Our Props</h2>
+            </p>
+        </div>
+        <div class="row justify-content-center" data-aos="zoom-in">
+            <div class="col-md-6 text-center d-flex align-items-stretch">
+                <div class="card mx-auto w-100">
+                    <img src="assets/images/about/flowers.png" class="card-img-top img-fluid" alt="Flowers">
+                    <div class="card-body">
+                        <h2>Flowers</h2>
+                        <p>Feel free to stick your photo, If it still fits...</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-muted">A beautiful variety of flowers that brings color and life to any room.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center d-flex align-items-stretch">
+                <div class="card mx-auto w-100">
+                    <img src="assets/images/about/glasses.png" class="card-img-top img-fluid" alt="Funny Glasses">
+                    <div class="card-body">
+                        <h2>Funny Glasses</h2>
+                        <p>Believe me, It's bigger than it looks like.</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-muted">A collection of humorous glasses perfect for parties or as a fun gift.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php include './modules/footer.php'; ?>
 </body>

@@ -36,25 +36,25 @@
 
 
             <div class="row justify-content-center" data-aos="zoom-in">
-                <div class="col-6 text-center">
-                    <h2>The Wall of Fame!!</h2>
-                    <p>
-                        Feel free to stick your photo, If it still fits...
-                    </p>
-                    <div class="card mx-auto">
+                <div class="col-md-6 text-center d-flex align-items-stretch">
+                    <!-- Use d-flex and align-items-stretch for equal height -->
+                    <div class="card mx-auto w-100">
+                        <!-- Use w-100 for full width -->
                         <img src="assets/images/home/wall.png" class="card-img-top" alt="">
                         <div class="card-body">
+                            <h2>The Wall of Fame!!</h2>
+                            <p>Feel free to stick your photo, If it still fits...</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 text-center">
-                    <h2>The Photo Area!!</h2>
-                    <p>
-                        Believe me, It's bigger than it looks like.
-                    </p>
-                    <div class="card mx-auto">
-                        <img src="assets/images/home/photo.jpg" class="card-img-top" alt="">
+                <div class="col-md-6 text-center d-flex align-items-stretch">
+                    <!-- Repeat the flex settings for equal height -->
+                    <div class="card mx-auto w-100">
+                        <!-- Use w-100 for full width -->
+                        <img src="assets/images/home/photo.png" class="card-img-top" alt="">
                         <div class="card-body">
+                            <h2>The Photo Area!!</h2>
+                            <p>Believe me, It's bigger than it looks like.</p>
                         </div>
                     </div>
                 </div>
