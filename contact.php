@@ -82,7 +82,8 @@
                     </div>
                 </div>
 
-                <div class="row mt-4" data-aos="fade-up">
+                <div class="row mt-4 flex-fill" data-aos="fade-up">
+
                     <div class="col-md-4">
                         <div class="card">
                             <img src="assets/images/contact/facebook.png" class="card-img-top" alt="Facebook Page">
@@ -95,7 +96,19 @@
                             </div>
                         </div>
                     </div>
+
+					<div class="col-md-6" data-aos="fade-up">
+						<div class="card">
+                            <div class="card-body">
+								<h5 class="card-title">Email us</h5>
+								<p><a href="mailto:Tansselfportraitstudio@gmail.com">Send email</a></p>
+                            </div>
+						</div>
+					</div>
+
                 </div>
+
+
             </div>
         </div>
     </section>
