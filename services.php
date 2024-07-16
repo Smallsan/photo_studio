@@ -16,7 +16,20 @@
     <?php include './modules/navbar.php'; ?>
     <?php include './modules/appointment_form.php'; ?>
     <?php include './modules/login_signup_form.php'; ?>
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "photo_studio";
 
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $query = "SELECT id, name, image FROM services ORDER BY id ASC";
+    $result = $conn->query($query);
+    ?>
 
     <section>
         <div class="container">
@@ -33,53 +46,29 @@
 
             <div class="container-fluid mt-5">
                 <div class="row">
+                    <?php if ($result->num_rows > 0) : ?>
+                    <?php while ($row = $result->fetch_assoc()) : ?>
                     <div class="col-md-4" data-aos="fade-right">
-                        <img class="d-block w-100" src="assets/images/carousel/sub_carousel/basic_package.jpg" alt=""
-                            data-bs-toggle="modal" data-bs-target="#myModal1" />
+                        <img class="d-block w-100" src="data:image/jpeg;base64,<?= base64_encode($row['image']) ?>"
+                            alt="<?= htmlspecialchars($row['name']) ?>" data-bs-toggle="modal"
+                            data-bs-target="#myModal<?= $row['id'] ?>" />
 
-                        <div class="modal fade" id="myModal1">
+                        <div class="modal fade" id="myModal<?= $row['id'] ?>">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-body">
                                         <img class="img-fluid"
-                                            src="assets/images/carousel/sub_carousel/basic_package.jpg" alt="" />
+                                            src="data:image/jpeg;base64,<?= base64_encode($row['image']) ?>"
+                                            alt="<?= htmlspecialchars($row['name']) ?>" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4" data-aos="fade-up">
-                        <img class="d-block w-100" src="assets/images/carousel/sub_carousel/premium_package.jpg" alt=""
-                            data-bs-toggle="modal" data-bs-target="#myModal2" />
-
-                        <div class="modal fade" id="myModal2">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img class="img-fluid"
-                                            src="assets/images/carousel/sub_carousel/premium_package.jpg" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img class="d-block w-100" src="assets/images/carousel/sub_carousel/group_package.jpg" alt=""
-                            data-bs-toggle="modal" data-bs-target="#myModal3" />
-
-                        <div class="modal fade" id="myModal3">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img class="img-fluid"
-                                            src="assets/images/carousel/sub_carousel/group_package.jpg" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endwhile; ?>
+                    <?php else : ?>
+                    <p>No services found.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

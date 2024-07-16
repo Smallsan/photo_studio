@@ -1,21 +1,5 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
-    echo json_encode(['error' => 'Unauthorized access.']);
-    exit;
-}
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "photo_studio";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require '../../scripts/database.php';
 
 if (isset($_POST['id']) && isset($_POST['confirmed'])) {
     $id = $_POST['id'];
