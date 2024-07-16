@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT id, username, user_type, password, name, phone, birthday, address FROM users WHERE email = ?");
+$stmt = $conn->prepare("SELECT id, username, user_type, password FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 
 $email = $_POST['email'];
@@ -28,10 +28,6 @@ if ($result->num_rows > 0) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['user_type'] = $row['user_type'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['phone'] = $row['phone'];
-        $_SESSION['birthday'] = $row['birthday'];
-        $_SESSION['address'] = $row['address'];
 
         echo "Login successful";
     } else {
