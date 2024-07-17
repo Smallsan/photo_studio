@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
               alert("Unknown form submitted.");
           }
         } else {
-          alert("There was an issue with the submission.");
+          alert("Username or email is already taken");
         }
         form.reset();
       })
