@@ -23,6 +23,11 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($_POST['password'], $row['password'])) {
+        $update_stmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
+        $update_stmt->bind_param("i", $row['id']);
+        $update_stmt->execute();
+        $update_stmt->close();
+
         $_SESSION['loggedin'] = true;
         $_SESSION['email'] = $email;
         $_SESSION['user_id'] = $row['id'];

@@ -78,10 +78,13 @@ if (session_status() == PHP_SESSION_NONE) {
                 <a href="admin_dashboard.php" class="btn btn-primary w-100 mb-2">Admin Dashboard</a>
                 <?php else: ?>
                 <a href="user_dashboard.php" class="btn btn-primary w-100 mb-2">User Dashboard</a>
+                <a href="modules/user_profile.php" class="btn btn-primary w-100 mb-2">User Profile</a>
+
                 <a href="#" class="btn btn-primary w-100 mb-2" data-bs-toggle="modal"
                     data-bs-target="#appointmentModal">Book Now</a>
 
                 <?php endif; ?>
+                <a href="modules/update_password.php" class="btn btn-primary w-100 mb-2">Change Password</a>
                 <button onclick="confirmLogout()" class="btn btn-danger w-100">Log Out</button>
             </div>
         </div>

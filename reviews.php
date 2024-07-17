@@ -19,46 +19,6 @@
 
     <section>
         <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <h2 class="card-title text-center mb-4">Add a Review</h2>
-                            <form action="sub_modules/reviews/submit_review.php" id="reviewForm" method="post">
-                                <div class="mb-3">
-                                    <label for="nameInput" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="nameInput" name="name"
-                                        placeholder="Your Name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ratingInput" class="form-label">Rating</label>
-                                    <select class="form-select" id="ratingInput" name="rating" required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="messageTextarea" class="form-label">Message</label>
-                                    <textarea class="form-control" id="messageTextarea" name="message" rows="3"
-                                        placeholder="Your review" required></textarea>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit Review</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section>
-        <div class="container py-5">
             <h2 class="text-center mb-5">Reviews</h2>
             <div class="row">
                 <?php
@@ -107,6 +67,47 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Add a Review</h2>
+                            <form action="sub_modules/reviews/submit_review.php" id="reviewForm" method="post">
+                                <div class="mb-3">
+                                    <label for="nameInput" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="nameInput" name="name"
+                                        placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ratingInput" class="form-label">Rating</label>
+                                    <select class="form-select" id="ratingInput" name="rating" required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="messageTextarea" class="form-label">Message</label>
+                                    <textarea class="form-control" id="messageTextarea" name="message" rows="3"
+                                        placeholder="Your review" required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <script>
     document.getElementById('reviewForm').addEventListener('submit', function(e) {

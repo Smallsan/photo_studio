@@ -5,6 +5,6 @@ session_unset();
 
 session_destroy();
 
-echo '<script>location.href = document.referrer;</script>';
+header("Location: ../index.php");
 exit();
 ?>

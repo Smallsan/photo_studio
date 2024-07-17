@@ -28,150 +28,253 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
 
 
     <div class="container my-5">
-        <h2 class="mb-4">All Appointments</h2>
-        <div class="row">
-            <?php
+        <h1 class="mb-4">Admin Dashboard</h1>
+        <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="appointments-tab" data-bs-toggle="tab"
+                    data-bs-target="#appointments" type="button" role="tab" aria-controls="appointments"
+                    aria-selected="true">All Appointments</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button"
+                    role="tab" aria-controls="reviews" aria-selected="false">Manage Reviews</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery" type="button"
+                    role="tab" aria-controls="gallery" aria-selected="false">Gallery</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button"
+                    role="tab" aria-controls="users" aria-selected="false">Users</button>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="user-profiles-tab" data-bs-toggle="tab" href="#userProfiles" role="tab"
+                    aria-controls="userProfiles" aria-selected="false">User Profiles</a>
+            </li>
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "photo_studio";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+        </ul>
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT * FROM appointments";
+    </div>
+    <div class="tab-content" id="adminTabsContent">
+        <div class="tab-pane fade show active" id="appointments" role="tabpanel" aria-labelledby="appointments-tab">
+            <div class="container my-5">
+                <h2 class="mb-4">All Appointments</h2>
+                <div class="row">
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "photo_studio";
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT * FROM appointments";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='col-md-6 col-lg-4 mb-3'>";
+                            echo "<div class='card'>";
+                            echo "<div class='card-body'>";
+                            echo "<h5 class='card-title'>Appointment ID: " . $row["id"] . "</h5>";
+                            echo "<p class='card-text'><strong>Name:</strong> " . $row["name"] . "</p>";
+                            echo "<p class='card-text'><strong>Email:</strong> " . $row["email"] . "</p>";
+                            echo "<p class='card-text'><strong>Phone:</strong> " . $row["phone"] . "</p>";
+                            echo "<p class='card-text'><strong>Date:</strong> " . $row["date"] . "</p>";
+                            echo "<p class='card-text'><strong>Time:</strong> " . $row["time"] . "</p>";
+                            echo "<p class='card-text'><strong>Package Type:</strong> " . $row["booking_type"] . "</p>";
+                            echo "<p class='card-text'><strong>Confirmed:</strong> ";
+                            echo "<select onchange='updateConfirmation(" . $row["id"] . ", this.value)'>";
+                            echo "<option value='1'" . ($row["confirmed"] ? " selected" : "") . ">Yes</option>";
+                            echo "<option value='0'" . (!$row["confirmed"] ? " selected" : "") . ">No</option>";
+                            echo "</select></p>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<p>No appointments found.</p>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="userProfiles" role="tabpanel" aria-labelledby="user-profiles-tab">
+            <div class="container mt-5">
+                <h2 class="mb-4">User Profiles</h2>
+                <div class="row">
+                    <?php
+            $sql = "SELECT id, name, birthday, address, phone FROM users_profile ORDER BY id ASC";
             $result = $conn->query($sql);
-
             if ($result->num_rows > 0) {
+                echo '<div class="table-responsive">';
+                echo '<table class="table">';
+                echo '<thead>';
+                echo '<tr>';
+                echo '<th>ID</th>';
+                echo '<th>Name</th>';
+                echo '<th>Birthday</th>';
+                echo '<th>Address</th>';
+                echo '<th>Phone</th>';
+                echo '</tr>';
+                echo '</thead>';
+                echo '<tbody>';
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='col-md-6 col-lg-4 mb-3'>";
-                    echo "<div class='card'>";
-                    echo "<div class='card-body'>";
-                    echo "<h5 class='card-title'>Appointment ID: " . $row["id"] . "</h5>";
-                    echo "<p class='card-text'><strong>Name:</strong> " . $row["name"] . "</p>";
-                    echo "<p class='card-text'><strong>Email:</strong> " . $row["email"] . "</p>";
-                    echo "<p class='card-text'><strong>Phone:</strong> " . $row["phone"] . "</p>";
-                    echo "<p class='card-text'><strong>Date:</strong> " . $row["date"] . "</p>";
-                    echo "<p class='card-text'><strong>Time:</strong> " . $row["time"] . "</p>";
-                    echo "<p class='card-text'><strong>Confirmed:</strong> ";
-                    echo "<select onchange='updateConfirmation(" . $row["id"] . ", this.value)'>";
-                    echo "<option value='1'" . ($row["confirmed"] ? " selected" : "") . ">Yes</option>";
-                    echo "<option value='0'" . (!$row["confirmed"] ? " selected" : "") . ">No</option>";
-                    echo "</select></p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                    echo '<tr>';
+                    echo '<td>' . $row['id'] . '</td>';
+                    echo '<td>' . $row['name'] . '</td>';
+                    echo '<td>' . $row['birthday'] . '</td>';
+                    echo '<td>' . $row['address'] . '</td>';
+                    echo '<td>' . $row['phone'] . '</td>';
+                    echo '</tr>';
                 }
+                echo '</tbody>';
+                echo '</table>';
+                echo '</div>';
             } else {
-                echo "<p>No appointments found.</p>";
+                echo '<p>No user profiles found.</p>';
             }
             ?>
-        </div>
-    </div>
-
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "photo_studio";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $query = "SELECT * FROM reviews ORDER BY approved ASC, name ASC";
-    $result = $conn->query($query);
-    ?>
-
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2 class="text-center mb-4">Manage Reviews</h2>
-                <?php if ($result->num_rows > 0) : ?>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Name</th>
-                                <th>Rating</th>
-                                <th>Message</th>
-                                <th>Approved</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($row = $result->fetch_assoc()) : ?>
-                            <tr>
-                                <td><?= htmlspecialchars($row['name']) ?></td>
-                                <td><?= htmlspecialchars($row['rating']) ?></td>
-                                <td><?= htmlspecialchars($row['message']) ?></td>
-                                <td><?= $row['approved'] ? 'Yes' : 'No' ?></td>
-                                <td>
-                                    <button class="btn btn-success" onclick="updateReviewStatus(<?= $row['id'] ?>, 1)"
-                                        <?= $row['approved'] ? 'disabled' : '' ?>>Approve</button>
-                                    <button class="btn btn-danger" onclick="updateReviewStatus(<?= $row['id'] ?>, 0)"
-                                        <?= !$row['approved'] ? 'disabled' : '' ?>>Disapprove</button>
-                                </td>
-                            </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
                 </div>
-                <?php else : ?>
-                <p class="text-center">No reviews found.</p>
-                <?php endif; ?>
             </div>
         </div>
-    </div>
-
-    <div class="container mt-5">
-        <h2 class="mb-4">Gallery</h2>
-        <div class="row" style="height: 1000px; overflow-y: scroll;">
-            <?php
-        $query = "SELECT id, upload_date, image FROM gallery ORDER BY upload_date DESC";
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='col-md-4 mb-3'>";
-                echo "<div class='card'>";
-                echo "<img class='card-img-top' src='data:image/jpeg;base64," . base64_encode($row['image']) . "' style='width: 100%; height: auto;'>";
-                echo "<div class='card-body'>";
-                echo "<p class='card-text'>Upload Date: " . $row["upload_date"] . "</p>";
-                echo "<button class='btn btn-danger' onclick='removeImage(" . $row["id"] . ")'>Remove</button>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p class='col-12'>No images found.</p>";
-        }
-        ?>
-        </div>
-        <button class="btn btn-primary mt-3" onclick="toggleUploadForm()">Add Image</button>
-    </div>
-
-    <div id="imageUploadForm" class="container mt-3" style="display: none;">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form onsubmit="event.preventDefault(); uploadImage();" enctype="multipart/form-data" class="card p-3">
-                    <div class="form-group">
-                        <label for="image">Select image to upload:</label>
-                        <input type="file" class="form-control-file" name="image" id="image" required>
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <h2 class="text-center mb-4">Manage Reviews</h2>
+                        <?php
+                        $query = "SELECT * FROM reviews ORDER BY approved ASC, name ASC";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                            echo '<div class="table-responsive">';
+                            echo '<table class="table table-bordered">';
+                            echo '<thead class="thead-dark">';
+                            echo '<tr>';
+                            echo '<th>Name</th>';
+                            echo '<th>Rating</th>';
+                            echo '<th>Message</th>';
+                            echo '<th>Approved</th>';
+                            echo '<th>Action</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<tr>';
+                                echo '<td>' . htmlspecialchars($row['name']) . '</td>';
+                                echo '<td>' . htmlspecialchars($row['rating']) . '</td>';
+                                echo '<td>' . htmlspecialchars($row['message']) . '</td>';
+                                echo '<td>' . ($row['approved'] ? 'Yes' : 'No') . '</td>';
+                                echo '<td>';
+                                echo '<button class="btn btn-success" onclick="updateReviewStatus(' . $row['id'] . ', 1)"' . ($row['approved'] ? ' disabled' : '') . '>Approve</button>';
+                                echo '<button class="btn btn-danger" onclick="updateReviewStatus(' . $row['id'] . ', 0)"' . (!$row['approved'] ? ' disabled' : '') . '>Disapprove</button>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            echo '</div>';
+                        } else {
+                            echo '<p class="text-center">No reviews found.</p>';
+                        }
+                        ?>
                     </div>
-                    <button type="submit" class="btn btn-success">Upload</button>
-                </form>
+                </div>
             </div>
         </div>
+        <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+            <div class="container mt-5">
+                <h2 class="mb-4">Gallery</h2>
+                <div class="row" style="height: 1000px; overflow-y: scroll;">
+                    <?php
+                    $query = "SELECT id, upload_date, image FROM gallery ORDER BY upload_date DESC";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='col-md-4 mb-3'>";
+                            echo "<div class='card'>";
+                            echo "<img class='card-img-top' src='data:image/jpeg;base64," . base64_encode($row['image']) . "' style='width: 100%; height: auto;'>";
+                            echo "<div class='card-body'>";
+                            echo "<p class='card-text'>Upload Date: " . $row["upload_date"] . "</p>";
+                            echo "<button class='btn btn-danger' onclick='removeImage(" . $row["id"] . ")'>Remove</button>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<p class='col-12'>No images found.</p>";
+                    }
+                    ?>
+                </div>
+                <button class="btn btn-primary mt-3" onclick="toggleUploadForm()">Add Image</button>
+            </div>
+            <div id="imageUploadForm" class="container mt-3" style="display: none;">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form onsubmit="event.preventDefault(); uploadImage();" enctype="multipart/form-data"
+                            class="card p-3">
+                            <div class="form-group">
+                                <label for="image">Select image to upload:</label>
+                                <input type="file" class="form-control-file" name="image" id="image" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+            <div class="container mt-5">
+                <h2 class="mb-4">Users</h2>
+                <div class="row">
+                    <?php
+                    $query = "SELECT id, email, user_type, last_login, username FROM users ORDER BY id ASC";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo '<div class="table-responsive">';
+                        echo '<table class="table">';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th>ID</th>';
+                        echo '<th>Email</th>';
+                        echo '<th>User Type</th>';
+                        echo '<th>Username</th>';
+                        echo '<th>Last Login</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+                        echo '<tbody>';
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>';
+                            echo '<td>' . $row['id'] . '</td>';
+                            echo '<td>' . $row['email'] . '</td>';
+                            echo '<td>' . $row['user_type'] . '</td>';
+                            echo '<td>' . $row['username'] . '</td>';
+                            echo '<td>' . $row['last_login'] . '</td>';
+                            echo '</tr>';
+                        }
+                        echo '</tbody>';
+                        echo '</table>';
+                        echo '</div>';
+                    } else {
+                        echo '<p>No users found.</p>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script>
+    $(document).ready(function() {
+        $('#adminTabs a').on('click', function(e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    });
+
     function toggleUploadForm() {
         var x = document.getElementById("imageUploadForm");
         if (x.style.display === "none") {
